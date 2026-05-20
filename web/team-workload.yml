@@ -1,0 +1,23 @@
+# version: '3.8'
+
+services:
+  # 主应用 - team-workload
+  dorado-main-client:
+    image: registry.minshenglife.com/mslife-mslife-coretst/team-workload-web:2026.4.24-230611-master
+    container_name: team-workload-client
+    restart: always
+    ports:
+      - "3000:3000"  # 暴露3000端口，映射到容器内3000端口
+#    environment:
+#      - NODE_ENV=poc-s
+    volumes:
+      - team-workload-logs:/app/server/logs
+    networks:
+      - dorado-network
+
+volumes:
+  team-workload-logs:
+
+networks:
+  dorado-network:
+    driver: bridge

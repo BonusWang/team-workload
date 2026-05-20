@@ -1,0 +1,53 @@
+# Compiled class files
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+!web/.node/*.tar.gz
+*.rar
+
+# Maven
+server/target/
+
+# Gradle
+.gradle/
+build/
+
+# Node
+web/node_modules/
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.project
+.classpath
+
+# Logs
+*.log
+server/logs/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temp files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Java temp
+hs_err_pid*.log
+FixDB.java
+FixDB.class
+fix_db.ps1
+fix_db_result.txt

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamworkload.mapper.SysRolePermissionMapper">
+    <select id="selectPermissionCodesByRole" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT permission_code FROM sys_role_permission WHERE role = #{role}
+    </select>
+    
+    <delete id="deleteByRole" parameterType="java.lang.String">
+        DELETE FROM sys_role_permission WHERE role = #{role}
+    </delete>
+</mapper>

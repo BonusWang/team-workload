@@ -1,0 +1,337 @@
+@import './variables.scss';
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  --el-bg-color: #{$bg-primary};
+  --el-bg-color-overlay: #{$bg-card-elevated};
+  --el-bg-color-page: #{$bg-primary};
+  --el-text-color-primary: #{$text-primary};
+  --el-text-color-regular: #{$text-primary};
+  --el-text-color-secondary: #{$text-secondary};
+  --el-text-color-placeholder: #{$text-muted};
+  --el-border-color: #{$border-color};
+  --el-border-color-light: #{$border-color-light};
+  --el-border-color-lighter: #{$border-color};
+  --el-color-primary: #{$brand-primary};
+  --el-color-primary-light-3: #{rgba(50, 240, 140, 0.7)};
+  --el-color-primary-light-5: #{rgba(50, 240, 140, 0.5)};
+  --el-color-primary-light-7: #{rgba(50, 240, 140, 0.3)};
+  --el-color-primary-light-9: #{rgba(50, 240, 140, 0.1)};
+  --el-color-primary-dark-2: #2ad67c;
+  --el-fill-color-blank: #{$bg-card};
+  --el-fill-color-light: #{$bg-secondary};
+  --el-fill-color-lighter: #{$bg-card};
+  --el-mask-color: rgba(0, 0, 0, 0.6);
+  --el-dialog-bg-color: #{$bg-card-elevated};
+  --el-menu-bg-color: #{$bg-secondary};
+  --el-menu-hover-bg-color: #{$bg-hover};
+  --el-menu-active-color: #{$brand-primary};
+  --el-menu-text-color: #{$text-secondary};
+  --el-menu-hover-text-color: #{$text-primary};
+  --el-table-bg-color: transparent;
+  --el-table-tr-bg-color: transparent;
+  --el-table-header-bg-color: #{$bg-secondary};
+  --el-table-row-hover-bg-color: #{$bg-hover};
+  --el-table-border-color: #{$border-color};
+  --el-table-header-text-color: #{$text-secondary};
+  --el-table-text-color: #{$text-primary};
+  --el-pagination-bg-color: transparent;
+  --el-pagination-button-bg-color: #{$bg-card};
+  --el-pagination-hover-color: #{$brand-primary};
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $bg-primary;
+  color: $text-primary;
+  font-family: $font-primary;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(50, 240, 140, 0.25);
+  color: $text-primary;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.10);
+  border-radius: 4px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.18);
+  }
+}
+
+a {
+  color: $brand-primary;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $brand-secondary;
+  }
+}
+
+.page-container {
+  padding: 28px 32px;
+  max-width: 1600px;
+  margin: 0 auto;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.card {
+  background: $bg-card;
+  border: 1px solid $border-color;
+  border-radius: $radius-lg;
+  padding: 24px;
+  box-shadow: $shadow-card;
+  transition: border-color $transition-normal, box-shadow $transition-normal;
+
+  &:hover {
+    border-color: $border-color-light;
+  }
+}
+
+.card-interactive {
+  @extend .card;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $border-color-brand;
+    box-shadow: $shadow-card-hover, $brand-glow;
+    transform: translateY(-1px);
+  }
+}
+
+.brand-text {
+  background: $brand-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mono {
+  font-family: $font-mono;
+}
+
+.section-title {
+  color: $text-primary;
+  margin: 0 0 16px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.page-title {
+  color: $text-primary;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.dark-table {
+  --el-table-border-color: #{$border-color};
+
+  :deep(th.el-table__cell) {
+    background-color: $bg-secondary !important;
+    color: $text-secondary;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid $border-color;
+    padding: 12px 0;
+  }
+
+  :deep(td.el-table__cell) {
+    border-bottom: 1px solid $border-color;
+    padding: 14px 0;
+    font-size: 14px;
+  }
+
+  :deep(tr) {
+    background-color: transparent;
+    transition: background-color $transition-fast;
+  }
+
+  :deep(.el-table__body tr:hover > td) {
+    background-color: $bg-hover !important;
+  }
+
+  :deep(.el-table__empty-block) {
+    background-color: transparent;
+  }
+
+  :deep(.el-table__inner-wrapper::before) {
+    display: none;
+  }
+
+  :deep(.el-table__body-wrapper) {
+    background: transparent;
+  }
+}
+
+.info-row {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  color: $text-secondary;
+  font-size: 14px;
+  flex-wrap: wrap;
+
+  strong {
+    color: $brand-primary;
+    font-family: $font-mono;
+    font-weight: 600;
+  }
+}
+
+.el-button--primary {
+  --el-button-bg-color: #{$brand-primary};
+  --el-button-border-color: #{$brand-primary};
+  --el-button-hover-bg-color: #2ad67c;
+  --el-button-hover-border-color: #2ad67c;
+  --el-button-text-color: #0a0b0d;
+  --el-button-hover-text-color: #0a0b0d;
+  font-weight: 600;
+  border-radius: $radius-sm;
+  transition: all $transition-fast;
+
+  &:hover {
+    box-shadow: 0 0 16px rgba(50, 240, 140, 0.3);
+  }
+}
+
+.el-dialog {
+  --el-dialog-border-radius: #{$radius-lg};
+  border: 1px solid $border-color-light;
+  box-shadow: $shadow-elevated;
+
+  .el-dialog__header {
+    border-bottom: 1px solid $border-color;
+    padding: 20px 24px;
+    margin-right: 0;
+
+    .el-dialog__title {
+      font-weight: 600;
+      font-size: 16px;
+      color: $text-primary;
+    }
+  }
+
+  .el-dialog__body {
+    padding: 24px;
+  }
+
+  .el-dialog__footer {
+    border-top: 1px solid $border-color;
+    padding: 16px 24px;
+  }
+}
+
+.el-form-item__label {
+  color: $text-secondary !important;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.el-input__wrapper {
+  border-radius: $radius-sm !important;
+  transition: all $transition-fast;
+
+  &.is-focus {
+    box-shadow: 0 0 0 1px $brand-primary, 0 0 12px rgba(50, 240, 140, 0.1) !important;
+  }
+}
+
+.el-select .el-input__wrapper.is-focus {
+  box-shadow: 0 0 0 1px $brand-primary, 0 0 12px rgba(50, 240, 140, 0.1) !important;
+}
+
+.el-tag {
+  border-radius: $radius-xs;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.el-pagination {
+  --el-pagination-button-disabled-bg-color: #{$bg-card};
+
+  .btn-prev, .btn-next, .el-pager li {
+    background-color: $bg-card !important;
+    border-radius: $radius-xs;
+    border: 1px solid $border-color;
+    color: $text-secondary;
+    transition: all $transition-fast;
+
+    &:hover {
+      color: $brand-primary;
+      border-color: $border-color-brand;
+    }
+
+    &.is-active {
+      background: $brand-primary-dim !important;
+      color: $brand-primary;
+      border-color: $border-color-brand;
+    }
+  }
+}
+
+.el-switch {
+  --el-switch-on-color: #{$brand-primary};
+}
+
+.el-divider {
+  border-color: $border-color;
+}
